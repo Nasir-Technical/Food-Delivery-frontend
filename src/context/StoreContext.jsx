@@ -3,11 +3,10 @@ import axios from "axios"
 import { createContext, useEffect, useState } from "react";
 export const StoreContext = createContext(null)
 
-
 const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
-    const url = "http://localhost:4000";
+    const url = "https://mr-foodi.vercel.app/"; // Updated URL
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
 
@@ -36,7 +35,6 @@ const StoreContextProvider = (props) => {
             if (cartItems[item] > 0) {
                 let itemInfo = food_list.find((product) => product._id === item);
                 totalAmount += itemInfo.price * cartItems[item]
-
             }
         }
         return totalAmount;
@@ -91,8 +89,6 @@ const StoreContextProvider = (props) => {
             {props.children}
         </StoreContext.Provider>
     )
-
-
-
 }
+
 export default StoreContextProvider;
