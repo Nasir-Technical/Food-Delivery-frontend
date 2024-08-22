@@ -10,7 +10,7 @@ const StoreContextProvider = (props) => {
     const [food_list, setFoodList] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const url = "https://mr-food-deliver.vercel.app";
+    const url = "https://mr-food-del.vercel.app/";
     // const url = "http://localhost:4000"; // Local backend URL
     
     const addToCart = async (itemId) => {
