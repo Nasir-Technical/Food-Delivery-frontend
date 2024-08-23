@@ -9,7 +9,9 @@ const StoreContextProvider = (props) => {
     const [food_list, setFoodList] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const url = "https://mr-food-del.vercel.app/";
+    
+    const url = "https://mr-food-del.vercel.app/"; // your backend URL
+    // const url = "http://localhost:4000"; // your backend URL
 
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
@@ -44,7 +46,7 @@ const StoreContextProvider = (props) => {
     };
 
     const getTotalCartAmount = () => {
-        const validCartItems = cartItems || {};
+        const validCartItems = cartItems || {};  // Ensure cartItems is not null or undefined
         return Object.entries(validCartItems).reduce((totalAmount, [itemId, quantity]) => {
             if (quantity > 0) {
                 const itemInfo = food_list.find((product) => product._id === itemId);
@@ -64,11 +66,11 @@ const StoreContextProvider = (props) => {
                 setFoodList(response.data.data);
             } else {
                 console.error("Invalid data format:", response.data);
-                setFoodList([]);
+                setFoodList([]); // Fallback to an empty array
             }
         } catch (error) {
             console.error("Error fetching food list:", error);
-            setFoodList([]);
+            setFoodList([]); // Set to empty array on error
         } finally {
             setLoading(false);
         }
@@ -79,7 +81,7 @@ const StoreContextProvider = (props) => {
             const response = await axios.post(`${url}/api/cart/get`, {}, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
-            setCartItems(response.data.cartData || {});
+            setCartItems(response.data.cartData || {}); // Ensure cartData is an object
         } catch (error) {
             console.error("Error loading cart data:", error);
         }
@@ -97,34 +99,21 @@ const StoreContextProvider = (props) => {
         loadData();
     }, []);
 
+    const contextValue = {
+        food_list,
+        cartItems,
+        setCartItems,
+        addToCart,
+        removeFromCart,
+        getTotalCartAmount,
+        url,
+        token,
+        setToken,
+        loading
+    };
+
     return (
-        <StoreContext.Provider value={{
-            food_list,
-            cartItems,
-            setCartItems,
-            addToCart,
-            removeFromCart,
-            getTotalCartAmount,
-            url,
-            token,
-            setToken,
-            loading
-        }}>
-            <div>
-                {loading ? (
-                    <p>Loading...</p>
-                ) : (
-                    food_list && food_list.length > 0 ? (
-                        food_list.map((item, index) => (
-                            <div key={index}>
-                                {/* Render food item */}
-                            </div>
-                        ))
-                    ) : (
-                        <p>No food items found</p>
-                    )
-                )}
-            </div>
+        <StoreContext.Provider value={contextValue}>
             {props.children}
         </StoreContext.Provider>
     );
