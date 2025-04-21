@@ -1,13 +1,18 @@
-.header{
+.header {
   height: 34vw;
+  min-height: 250px; /* Added minimum height for mobile */
   margin: 30px auto;
   background: url('/header_img.png') no-repeat;
   background-size: contain;
+  background-position: center; /* Ensure image stays centered */
   position: relative;
+  width: 100%;
 }
-.header-contents{
+
+.header-contents {
   position: absolute;
-  display: flex;flex-direction: column;
+  display: flex;
+  flex-direction: column;
   align-items: start;
   gap: 1.5vw;
   max-width: 50%;
@@ -15,21 +20,96 @@
   left: 6vw;
   animation: fadeIn 3s;
 }
-.header-contents h2{
+
+.header-contents h2 {
   font-weight: 500;
   color: white;
-  font-size: max(4.5vw,22px);
+  font-size: max(4.5vw, 22px);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Better text visibility */
 }
-.header-contents p{
+
+.header-contents p {
   color: white;
   font-size: 1vw;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Better text visibility */
 }
-.header-contents button{
+
+.header-contents button {
   border: none;
   color: #747474;
   font-weight: 500;
   padding: 1vw 2.3vw;
   background-color: white;
-  font-size: max(1vw,13px);
+  font-size: max(1vw, 13px);
   border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header-contents button:hover {
+  background-color: #f8f8f8;
+  transform: scale(1.02);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 992px) {
+  .header {
+    height: 40vw;
+  }
+  
+  .header-contents {
+    max-width: 60%;
+    gap: 1.2vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    height: 50vw;
+    min-height: 200px;
+    background-size: cover;
+  }
+  
+  .header-contents {
+    max-width: 70%;
+    left: 5vw;
+    bottom: 15%;
+  }
+  
+  .header-contents p {
+    font-size: 1.5vw;
+  }
+  
+  .header-contents button {
+    padding: 1.2vw 2.5vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    height: 60vw;
+    min-height: 180px;
+    margin: 20px auto;
+  }
+  
+  .header-contents {
+    max-width: 85%;
+    left: 3vw;
+    bottom: 10%;
+    gap: 2vw;
+  }
+  
+  .header-contents h2 {
+    font-size: max(5vw, 18px);
+  }
+  
+  .header-contents p {
+    font-size: 2vw;
+    display: none; /* Optional: hide paragraph on very small screens */
+  }
+  
+  .header-contents button {
+    padding: 2vw 4vw;
+    font-size: max(3vw, 12px);
+  }
 }

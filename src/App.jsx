@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer"
 import Loginpopup from "./components/Loginpopup/Loginpopup"
 import Verify from "./pages/Verify/Verify"
 import MyOrders from "./pages/MyOrders/MyOrders"
+// import Loader from "./components/Loader/Loader"
 
 const App = () => {
    
@@ -15,6 +16,7 @@ const App = () => {
 
   return (
     <>
+    {/* <Loader /> */}
       {showLogin ? <Loginpopup setShowLogin={setShowLogin} /> : <></>}
       <div className="App">
         <Navbar setShowLogin={setShowLogin} />

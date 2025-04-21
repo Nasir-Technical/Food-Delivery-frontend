@@ -9,7 +9,7 @@ const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const url = "https://mr-food-del.vercel.app"; // ✅ No trailing slash
+  const url = "http://localhost:4000"; // ✅ No trailing slash
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
@@ -77,8 +77,8 @@ const StoreContextProvider = (props) => {
       console.log("Food list response:", response.data); // ✅ Optional debug
 
       // ✅ Adjust if backend sends { foods: [...] }
-      if (Array.isArray(response.data.foods)) {
-        setFoodList(response.data.foods);
+      if (Array.isArray(response.data.data)) {
+        setFoodList(response.data.data);
       } else {
         console.error("Invalid food list format:", response.data);
         setFoodList([]);

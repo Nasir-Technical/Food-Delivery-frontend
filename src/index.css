@@ -1,31 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Roboto+Condensed;
+  font-family: 'Roboto Condensed', sans-serif;
   scroll-behavior: smooth;
 }
 
-body{
+body {
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
-a{
+
+a {
   text-decoration: none;
   color: inherit;
 }
 
-.App{
+.App {
   width: 80%;
   margin: auto;
+  padding: 20px 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .App {
+    width: 90%;
+    padding: 15px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .App {
+    width: 95%;
+    padding: 10px 0;
+  }
 }
 
 @keyframes fadeIn {
-  0%{
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }

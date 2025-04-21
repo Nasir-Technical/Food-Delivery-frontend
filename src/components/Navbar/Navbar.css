@@ -1,26 +1,31 @@
-.navbar{
-  padding: 20px 0px;
+.navbar {
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
-.navbar .logo{
+.navbar .logo {
   width: 150px;
+  height: auto;
 }
-.navbar-menu{
+
+.navbar-menu {
   display: flex;
   list-style: none;
   gap: 20px;
   color: #49557e;
   font-size: 18px;
 }
-.navbar-right{
+
+.navbar-right {
   display: flex;
   align-items: center;
-  gap: 40PX;
+  gap: 40px;
 }
-.navbar button{
+
+.navbar button {
   background: transparent;
   font-size: 16px;
   color: #49557e;
@@ -30,29 +35,36 @@
   cursor: pointer;
   transition: 0.3s;
 }
-.navbar button:hover{
+
+.navbar button:hover {
   background-color: #fff4f2;
 }
-.navbar .active{
+
+.navbar .active {
   padding-bottom: 2px;
   border-bottom: 2px solid #49557e;
 }
-.navbar ul{
+
+.navbar ul {
   cursor: pointer;
 }
-.navbar-search-icon{
+
+.navbar-search-icon {
   position: relative;
 }
-.navbar-profile{
+
+.navbar-profile {
   position: relative;
 }
-.nav-profile-dropdown{
+
+.nav-profile-dropdown {
   position: absolute;
   display: none;
   right: 0;
   z-index: 1;
 }
-.navbar-profile:hover .nav-profile-dropdown{
+
+.navbar-profile:hover .nav-profile-dropdown {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -63,19 +75,23 @@
   outline: 2px solid white;
   list-style: none;
 }
-.nav-profile-dropdown li{
+
+.nav-profile-dropdown li {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
 }
-.nav-profile-dropdown img{
+
+.nav-profile-dropdown img {
   width: 20px;
 }
-.nav-profile-dropdown li:hover{
+
+.nav-profile-dropdown li:hover {
   color: tomato;
 }
-.navbar-search-icon .dot{
+
+.navbar-search-icon .dot {
   position: absolute;
   min-width: 10px;
   min-height: 10px;
@@ -83,4 +99,79 @@
   border-radius: 5px;
   top: -8px;
   right: -8px;
+}
+
+/* Mobile Menu Icon */
+.navbar-menu-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #49557e;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 992px) {
+  .navbar-right {
+    gap: 30px;
+  }
+  
+  .navbar button {
+    padding: 8px 20px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-right {
+    gap: 25px;
+  }
+
+  .navbar-menu-icon {
+    display: block;
+  }
+
+  .navbar-profile .nav-profile-dropdown {
+    position: fixed;
+    top: 80px;
+    width: 90%;
+    left: 5%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 15px 0;
+  }
+
+  .navbar .logo {
+    width: 120px;
+  }
+
+  .navbar-right {
+    gap: 15px;
+  }
+
+  .navbar button {
+    padding: 6px 15px;
+    font-size: 14px;
+  }
 }
