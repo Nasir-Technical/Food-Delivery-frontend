@@ -9,8 +9,8 @@ const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // const url = "https://food-del-ashen-ten.vercel.app"; // ✅ No trailing slash
-  const url = "http://localhost:4000"; // ✅ No trailing slash
+  const url = "https://food-delivery-backend-nu-seven.vercel.app"; // ✅ No trailing slash
+  // const url = "http://localhost:4000"; // ✅ No trailing slash
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
